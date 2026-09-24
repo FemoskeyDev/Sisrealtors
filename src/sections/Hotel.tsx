@@ -134,7 +134,7 @@ export function Hotel() {
                     }}
                     className="mt-16 md:mt-24"
                 >
-                    <div className="relative aspect-[16/9] min-h-[420px] overflow-hidden bg-neutral-900 md:min-h-[620px] lg:min-h-[720px]">
+                    <div className="relative aspect-[16/9] overflow-hidden bg-neutral-900 md:min-h-[620px] lg:min-h-[720px]">
                         <motion.img
                             src={hotelImage}
                             alt="Dominion Leisure City hotel"

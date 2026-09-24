@@ -132,7 +132,7 @@ export function Mall() {
                     }}
                     className="mt-16 overflow-hidden md:mt-24"
                 >
-                    <div className="aspect-[16/9] min-h-[420px] overflow-hidden bg-neutral-100 md:min-h-[620px] lg:min-h-[720px]">
+                    <div className="aspect-[16/9] overflow-hidden bg-neutral-100 md:min-h-[620px] lg:min-h-[720px]">
                         <motion.img
                             src={mallImage}
                             alt="Dominion Mall"

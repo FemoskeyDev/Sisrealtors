@@ -76,7 +76,7 @@ export function Hero() {
           }}
           className="relative overflow-hidden"
         >
-          <div className="relative aspect-[16/9] min-h-[420px] w-full bg-neutral-900 md:min-h-[560px] lg:min-h-[680px]">
+          <div className="relative aspect-[16/9] w-full bg-neutral-900 md:min-h-[560px] lg:min-h-[680px]">
             <video
               autoPlay
               muted

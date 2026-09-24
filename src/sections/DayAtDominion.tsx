@@ -287,7 +287,7 @@ export function DayAtDominion() {
                             className="mt-12 grid overflow-hidden border border-white/10 md:grid-cols-[1.3fr_0.7fr] lg:mt-16"
                         >
                             {/* Experience visual */}
-                            <div className="relative aspect-[4/3] min-h-[360px] overflow-hidden bg-neutral-900 md:aspect-auto md:min-h-[620px]">
+                            <div className="relative aspect-[4/3] overflow-hidden bg-neutral-900 md:aspect-auto md:min-h-[620px]">
                                 <motion.img
                                     key={activeExperience.image}
                                     src={activeExperience.image}

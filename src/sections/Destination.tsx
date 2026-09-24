@@ -159,7 +159,7 @@ export function Destination() {
                             MASTERPLAN VISUAL
                         ========================================== */}
 
-                        <div className="relative aspect-[4/3] min-h-[500px] overflow-hidden bg-neutral-100 md:min-h-[650px] lg:aspect-auto lg:min-h-[760px]">
+                        <div className="relative aspect-[4/3] md:min-h-[650px] lg:min-h-[760px] overflow-hidden bg-neutral-100 md:min-h-[650px] lg:aspect-auto lg:min-h-[760px]">
                             <motion.img
                                 src={masterplanImage}
                                 alt="Dominion Leisure City"
