@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
 import { Container } from "./Container";
+import logo from "../assets/logo.svg";
 
 const navItems = [
   { label: "Experience", href: "#experience" },
@@ -30,84 +31,136 @@ export function Navbar() {
     };
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? "hidden" : "";
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileOpen]);
+
   const closeMobileMenu = () => {
     setMobileOpen(false);
   };
 
   return (
-    <header
-      className={[
-        "fixed inset-x-0 top-0 z-50 transition-all duration-500",
-        scrolled
-          ? "border-b border-white/10 bg-[#080808]/90 backdrop-blur-xl"
-          : "bg-transparent",
-      ].join(" ")}
-    >
-      <Container>
-        <div className="flex h-20 items-center justify-between md:h-24">
-          <a
-            href="#"
-            className="text-sm font-semibold uppercase tracking-[0.18em]"
-          >
-            Dominion
-          </a>
+    <>
+      <header
+        className={[
+          "fixed inset-x-0 top-0 z-50 transition-all duration-500",
+          scrolled
+            ? "border-b border-black/10 bg-white/90 backdrop-blur-xl"
+            : "bg-white",
+        ].join(" ")}
+      >
+        <Container>
+          <div className="flex h-20 items-center justify-between lg:h-24">
+            {/* Logo */}
+            <a
+              href="#"
+              onClick={closeMobileMenu}
+              aria-label="SIS Realtors Limited"
+              className="relative z-50 flex shrink-0 items-center"
+            >
+              <img
+                src={logo}
+                alt="SIS Realtors Limited"
+                className="block h-auto w-[120px] object-contain md:w-[140px]"
+              />
+            </a>
 
-          <nav className="hidden items-center gap-7 lg:flex">
-            {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="text-sm text-white/70 transition-colors hover:text-white"
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
+            {/* Desktop Navigation */}
+            <nav
+              aria-label="Main navigation"
+              className="hidden items-center gap-5 lg:flex"
+            >
+              {navItems.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className="whitespace-nowrap text-sm font-normal !text-black/60 transition-colors duration-300 hover:!text-black"
+                >
+                  {item.label}
+                </a>
+              ))}
+            </nav>
 
-          <a
-            href="#partner"
-            className="hidden items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-medium text-black transition-transform hover:scale-[1.02] lg:flex"
-          >
-            Partner With Us
-            <ArrowUpRight size={16} />
-          </a>
-
-          <button
-            type="button"
-            aria-label={mobileOpen ? "Close menu" : "Open menu"}
-            onClick={() => setMobileOpen((open) => !open)}
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 text-white lg:hidden"
-          >
-            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
-        </div>
-      </Container>
-
-      {mobileOpen && (
-        <div className="border-t border-white/10 bg-[#080808]/95 px-6 py-8 backdrop-blur-xl lg:hidden">
-          <nav className="flex flex-col gap-6">
-            {navItems.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                onClick={closeMobileMenu}
-                className="text-2xl font-medium"
-              >
-                {item.label}
-              </a>
-            ))}
-
+            {/* Desktop CTA */}
             <a
               href="#partner"
-              onClick={closeMobileMenu}
-              className="mt-2 inline-flex w-fit items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-medium text-black"
+              className="hidden shrink-0 items-center gap-2 bg-black px-5 py-3 text-sm font-medium !text-white transition-transform duration-300 hover:-translate-y-0.5 lg:inline-flex"
             >
               Partner With Us
-              <ArrowUpRight size={16} />
+              <ArrowUpRight size={16} strokeWidth={1.8} />
             </a>
-          </nav>
+
+            {/* Mobile Menu Button */}
+            <button
+              type="button"
+              aria-label={
+                mobileOpen ? "Close navigation" : "Open navigation"
+              }
+              aria-expanded={mobileOpen}
+              onClick={() => setMobileOpen((open) => !open)}
+              className="relative z-50 flex h-11 w-11 items-center justify-center border border-black/10 !text-black lg:hidden"
+            >
+              {mobileOpen ? (
+                <X size={20} strokeWidth={1.8} />
+              ) : (
+                <Menu size={20} strokeWidth={1.8} />
+              )}
+            </button>
+          </div>
+        </Container>
+      </header>
+
+      {/* Mobile Navigation */}
+      <div
+        className={[
+          "fixed inset-0 z-40 bg-white transition-all duration-500 lg:hidden",
+          mobileOpen
+            ? "pointer-events-auto visible opacity-100"
+            : "pointer-events-none invisible opacity-0",
+        ].join(" ")}
+      >
+        <div className="flex h-full flex-col pt-20">
+          <Container className="flex h-full flex-col">
+            <nav
+              aria-label="Mobile navigation"
+              className="flex flex-col pt-6"
+            >
+              {navItems.map((item, index) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  onClick={closeMobileMenu}
+                  className={[
+                    "border-b border-black/10 py-5 text-[clamp(2rem,7vw,3.5rem)] font-medium leading-none tracking-[-0.04em] !text-black",
+                    index === 0 ? "border-t" : "",
+                  ].join(" ")}
+                >
+                  {item.label}
+                </a>
+              ))}
+            </nav>
+
+            <div className="mt-auto border-t border-black/10 py-6">
+              <a
+                href="#partner"
+                onClick={closeMobileMenu}
+                className="inline-flex items-center gap-2 bg-black px-6 py-4 text-sm font-medium !text-white"
+              >
+                Partner With Us
+                <ArrowUpRight size={16} strokeWidth={1.8} />
+              </a>
+
+              <p className="mt-5 text-xs uppercase tracking-[0.18em] !text-black/40">
+                Retail · Lifestyle · Hospitality · Entertainment
+              </p>
+            </div>
+          </Container>
         </div>
-      )}
-    </header>
+      </div>
+    </>
   );
 }

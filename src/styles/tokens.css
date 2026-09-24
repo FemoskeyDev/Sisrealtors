@@ -8,6 +8,13 @@
   --color-white: #ffffff;
   --color-surface: #111111;
   --color-muted: #a3a3a3;
+  --color-brand-primary: #d39b2a;
+  --color-brand-primary-hover: #e0aa3d;
+
+  --color-brand-secondary: #051b41;
+  --color-brand-secondary-hover: #092653;
+
+  --color-brand-dark: #0b0d10;
 
   /* Radius */
   --radius-sm: 0.5rem;
