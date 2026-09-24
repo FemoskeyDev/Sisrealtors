@@ -1,0 +1,54 @@
+name: Deploy Dominion Leisure City
+
+on:
+    push:
+        branches:
+            - main
+
+jobs:
+    build-and-deploy:
+        runs-on: ubuntu-latest
+
+        steps:
+            # Get the latest project files from GitHub
+            - name: Checkout repository
+              uses: actions/checkout@v4
+
+            # Install Node.js
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 22
+                  cache: pnpm
+
+            # Enable pnpm
+            - name: Setup pnpm
+              uses: pnpm/action-setup@v4
+              with:
+                  version: 10
+
+            # Install project dependencies
+            - name: Install dependencies
+              run: pnpm install --frozen-lockfile
+
+            # Build the production version
+            - name: Build production site
+              run: pnpm build
+
+            # Upload the production build to Truehost
+            - name: Deploy to Truehost
+              uses: SamKirkland/FTP-Deploy-Action@v4.4.0
+              with:
+                  server: ${{ secrets.FTP_SERVER }}
+                  username: ${{ secrets.FTP_USERNAME }}
+                  password: ${{ secrets.FTP_PASSWORD }}
+                  protocol: ftps
+                  port: 21
+                  local-dir: ./dist/
+                  server-dir: ./
+                  exclude: |
+                      **/.git*
+                      **/.git*/**
+                      **/node_modules/**
+                      **/.github/**
+                      videos/dominion-hero.mp4
