@@ -28,9 +28,15 @@ const contactDetails = [
         icon: Phone,
     },
     {
-        label: "Email",
-        value: "admin@sisrealtorsltd.com",
-        href: "mailto:admin@sisrealtorsltd.com",
+        label: "General / Information",
+        value: "info@sisrealtors.com",
+        href: "mailto:info@sisrealtors.com",
+        icon: Mail,
+    },
+    {
+        label: "Administration",
+        value: "admin@sisrealtors.com",
+        href: "mailto:admin@sisrealtors.com",
         icon: Mail,
     },
 ];
@@ -40,26 +46,11 @@ const contactDetails = [
 // ============================================================
 
 const enquiryOptions = [
-    {
-        label: "General Enquiry",
-        subject: "General Enquiry — Dominion Leisure City",
-    },
-    {
-        label: "Brand / Tenant Enquiry",
-        subject: "Brand / Tenant Enquiry — Dominion Leisure City",
-    },
-    {
-        label: "Partnership Enquiry",
-        subject: "Partnership Enquiry — Dominion Leisure City",
-    },
-    {
-        label: "Investor Enquiry",
-        subject: "Investor Enquiry — Dominion Leisure City",
-    },
-    {
-        label: "Media Enquiry",
-        subject: "Media Enquiry — Dominion Leisure City",
-    },
+    { label: "General Enquiry" },
+    { label: "Brand / Tenant Enquiry" },
+    { label: "Partnership Enquiry" },
+    { label: "Investor Enquiry" },
+    { label: "Media Enquiry" },
 ];
 
 export function Contact() {
@@ -242,9 +233,7 @@ export function Contact() {
                                 (enquiry, index) => (
                                     <a
                                         key={enquiry.label}
-                                        href={`mailto:admin@sisrealtorsltd.com?subject=${encodeURIComponent(
-                                            enquiry.subject,
-                                        )}`}
+                                        href="/contact"
                                         className={[
                                             "group flex items-center justify-between gap-5 border-b border-black/10 py-6",
                                             index % 2 === 0

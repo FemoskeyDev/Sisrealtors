@@ -4,7 +4,7 @@ import { Container } from "../components/Container";
 import { SectionLabel } from "../components/SectionLabel";
 import { Button } from "../components/Button";
 
-import hotelImage from "../assets/images/dominion-stay.jpeg";
+import hotelImage from "../assets/images/hotel.jpeg";
 
 // ============================================================
 // HOTEL EXPERIENCE DATA

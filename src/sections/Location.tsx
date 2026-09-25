@@ -2,7 +2,6 @@ import { motion } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 import { Container } from "../components/Container";
 import { SectionLabel } from "../components/SectionLabel";
-import { Button } from "../components/Button";
 
 // ============================================================
 // LOCATION HIGHLIGHTS
@@ -33,6 +32,16 @@ const locationHighlights = [
         title: "Lekki Free Trade Zone",
         description:
             "An expanding economic and industrial hub.",
+    },
+    {
+        number: "05",
+        title: "Lekki International Airport",
+        description: "Location information to be confirmed.",
+    },
+    {
+        number: "06",
+        title: "Alaro City",
+        description: "Location information to be confirmed.",
     },
 ];
 
@@ -108,43 +117,14 @@ export function Location() {
                             one of Lagos State’s major growth corridors.
                             The surrounding region is experiencing
                             significant residential, industrial,
-                            commercial and infrastructure development.
-                        </p>
-                    </motion.div>
-                </div>
-
-                {/* ==================================================
-                    LOCATION STATEMENT
-                ================================================== */}
-
-                <motion.div
-                    initial={{ opacity: 0, y: 24 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{
-                        once: true,
-                        margin: "-10% 0px",
-                    }}
-                    transition={{
-                        delay: 0.1,
-                        duration: 0.8,
-                        ease: [0.22, 1, 0.36, 1],
-                    }}
-                    className="mt-16 border-y border-black/10 py-10 md:mt-24 md:py-14"
-                >
-                    <div className="flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
-                        <p className="max-w-3xl text-[clamp(1.75rem,3vw,3rem)] leading-[1.05] tracking-[-0.035em]">
-                            Positioned within a corridor shaped by
-                            growth, movement and{" "}
-                            <span className="text-black/35">
+                            commercial and infrastructure development.{" "}
+                            <span className="font-semibold text-yellow-600">
+                                Positioned within a corridor shaped by growth, movement and
                                 opportunity.
                             </span>
                         </p>
-
-                        <span className="text-xs uppercase tracking-[0.2em] text-black/35">
-                            Lekki–Epe Corridor · Lagos, Nigeria
-                        </span>
-                    </div>
-                </motion.div>
+                    </motion.div>
+                </div>
 
                 {/* ==================================================
                     LOCATION HIGHLIGHTS
@@ -156,16 +136,16 @@ export function Location() {
                             Location Highlights
                         </SectionLabel>
 
-                        <span className="hidden text-xs uppercase tracking-[0.2em] text-black/30 md:block">
-                            The wider growth corridor
-                        </span>
                     </div>
 
                     <div className="grid md:grid-cols-2">
                         {locationHighlights.map(
                             (location, index) => (
-                                <motion.div
+                                <motion.a
                                     key={location.number}
+                                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location.title)}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
                                     initial={{
                                         opacity: 0,
                                         y: 24,
@@ -221,49 +201,12 @@ export function Location() {
                                             </p>
                                         </div>
                                     </div>
-                                </motion.div>
+                                </motion.a>
                             ),
                         )}
                     </div>
                 </div>
 
-                {/* ==================================================
-                    CLOSING STATEMENT + CTA
-                ================================================== */}
-
-                <motion.div
-                    initial={{ opacity: 0, y: 24 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{
-                        once: true,
-                        margin: "-10% 0px",
-                    }}
-                    transition={{
-                        delay: 0.1,
-                        duration: 0.8,
-                        ease: [0.22, 1, 0.36, 1],
-                    }}
-                    className="mt-16 flex flex-col gap-8 border-t border-black/10 pt-10 md:mt-24 md:flex-row md:items-end md:justify-between"
-                >
-                    <div>
-                        <p className="text-xs uppercase tracking-[0.2em] text-black/35">
-                            The opportunity
-                        </p>
-
-                        <h3 className="mt-4 text-[clamp(2rem,4vw,4rem)] font-normal leading-none tracking-[-0.04em]">
-                            The city is moving east.
-                        </h3>
-
-                        <p className="mt-4 text-lg text-black/45">
-                            Dominion Leisure City is positioned to
-                            move with it.
-                        </p>
-                    </div>
-
-                    <Button href="#partnership">
-                        Explore the Location
-                    </Button>
-                </motion.div>
             </Container>
         </section>
     );

@@ -83,7 +83,7 @@ export function Introduction() {
                             Dominion is designed around a simple idea: bring everything
                             people love about modern city life together in one extraordinary
                             place. From premium retail and dining to hospitality and
-                            entertainment, Dominion creates an environment where people can
+                            the amusement park, Dominion creates an environment where people can
                             shop, connect, experience, stay and return.
                         </p>
 

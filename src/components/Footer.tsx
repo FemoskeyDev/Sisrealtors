@@ -10,7 +10,7 @@ const exploreLinks = [
     { label: "Experience", href: "#experience" },
     { label: "Mall", href: "#mall" },
     { label: "Hotel", href: "#hotel" },
-    { label: "Entertainment", href: "#entertainment" },
+    { label: "Amusement Park", href: "#entertainment" },
     { label: "Dining", href: "#experience" },
     { label: "Location", href: "#location" },
     { label: "Brands", href: "#brands" },
@@ -19,13 +19,13 @@ const exploreLinks = [
 const companyLinks = [
     { label: "About SIS Realtors", href: "#about" },
     { label: "News", href: "#news" },
-    { label: "Contact", href: "#contact" },
+    { label: "Contact", href: "/contact" },
 ];
 
 const opportunityLinks = [
-    { label: "Become a Tenant", href: "#brands" },
-    { label: "Partnerships", href: "#partnership" },
-    { label: "Investor Relations", href: "#partnership" },
+    { label: "Become a Tenant", href: "/contact" },
+    { label: "Partnerships", href: "/contact" },
+    { label: "Investor Relations", href: "/contact" },
 ];
 
 const socialLinks = [
@@ -48,6 +48,8 @@ const socialLinks = [
 ];
 
 export function Footer() {
+    const isContactPage = window.location.pathname.replace(/\/+$/, "") === "/contact";
+
     return (
         <footer className="bg-neutral-950 text-white">
             <Container>
@@ -80,7 +82,7 @@ export function Footer() {
 
                             <p className="mt-2 text-sm text-white/35">
                                 Retail · Lifestyle · Hospitality ·
-                                Entertainment
+                                Amusement Park
                             </p>
 
                             <p className="mt-10 max-w-sm text-sm leading-7 text-white/40">
@@ -103,7 +105,11 @@ export function Footer() {
                                     {exploreLinks.map((link) => (
                                         <a
                                             key={link.label}
-                                            href={link.href}
+                                            href={
+                                                isContactPage && link.href.startsWith("#")
+                                                    ? `/${link.href}`
+                                                    : link.href
+                                            }
                                             className="group flex w-fit items-center gap-2 py-2 text-sm text-white/55 transition-colors duration-300 hover:text-white"
                                         >
                                             {link.label}
@@ -128,7 +134,11 @@ export function Footer() {
                                     {companyLinks.map((link) => (
                                         <a
                                             key={link.label}
-                                            href={link.href}
+                                            href={
+                                                isContactPage && link.href.startsWith("#")
+                                                    ? `/${link.href}`
+                                                    : link.href
+                                            }
                                             className="group flex w-fit items-center gap-2 py-2 text-sm text-white/55 transition-colors duration-300 hover:text-white"
                                         >
                                             {link.label}
@@ -154,7 +164,11 @@ export function Footer() {
                                         (link) => (
                                             <a
                                                 key={link.label}
-                                                href={link.href}
+                                                href={
+                                                    isContactPage && link.href.startsWith("#")
+                                                        ? `/${link.href}`
+                                                        : link.href
+                                                }
                                                 className="group flex w-fit items-center gap-2 py-2 text-sm text-white/55 transition-colors duration-300 hover:text-white"
                                             >
                                                 {link.label}
@@ -198,7 +212,7 @@ export function Footer() {
                         </div>
 
                         <a
-                            href="#contact"
+                            href="/contact"
                             className="inline-flex items-center gap-2 text-sm text-white/60 transition-colors duration-300 hover:text-white"
                         >
                             Contact SIS

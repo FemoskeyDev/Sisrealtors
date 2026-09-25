@@ -35,6 +35,8 @@ jobs:
 
             # Build production site
             - name: Build production site
+              env:
+                  VITE_WEB3FORMS_ACCESS_KEY: ${{ secrets.VITE_WEB3FORMS_ACCESS_KEY }}
               run: pnpm build
 
             # Deploy production build to Truehost

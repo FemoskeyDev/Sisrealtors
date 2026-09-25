@@ -1,5 +1,16 @@
 import { motion } from "motion/react";
-import { ArrowUpRight } from "lucide-react";
+import {
+    ArrowUpRight,
+    BriefcaseBusiness,
+    Gamepad2,
+    Heart,
+    House,
+    Laptop,
+    Shirt,
+    ShoppingCart,
+    Sparkles,
+    Utensils,
+} from "lucide-react";
 import { Container } from "../components/Container";
 import { SectionLabel } from "../components/SectionLabel";
 import { Button } from "../components/Button";
@@ -10,22 +21,22 @@ import { Button } from "../components/Button";
 // ============================================================
 
 const tenantCategories = [
-    "Fashion",
-    "Beauty",
-    "Technology",
-    "Supermarket",
-    "Dining",
-    "Entertainment",
-    "Lifestyle",
-    "Home & Living",
-    "Services",
+    { name: "Fashion", icon: Shirt },
+    { name: "Beauty", icon: Sparkles },
+    { name: "Technology", icon: Laptop },
+    { name: "Supermarket", icon: ShoppingCart },
+    { name: "Dining", icon: Utensils },
+    { name: "Entertainment", icon: Gamepad2 },
+    { name: "Lifestyle", icon: Heart },
+    { name: "Home & Living", icon: House },
+    { name: "Services", icon: BriefcaseBusiness },
 ];
 
 export function BrandPartnership() {
     return (
         <section
             id="brands"
-            className="bg-neutral-950 py-24 text-white md:py-32 lg:py-40"
+            className="bg-yellow-700 py-24 text-white md:py-32 lg:py-40"
         >
             <Container>
                 {/* ==================================================
@@ -119,60 +130,34 @@ export function BrandPartnership() {
                         duration: 0.8,
                         ease: [0.22, 1, 0.36, 1],
                     }}
-                    className="mt-16 border-y border-white/10 md:mt-24"
+                    className="mt-16 md:mt-24"
                 >
-                    <div className="grid md:grid-cols-[0.35fr_1fr]">
-                        {/* Category heading */}
-                        <div className="border-b border-white/10 py-7 md:border-b-0 md:border-r md:py-10 md:pr-8">
-                            <p className="text-xs uppercase tracking-[0.2em] text-white/35">
-                                Ideal Tenant Categories
-                            </p>
-                        </div>
+                    <p className="text-xs uppercase tracking-[0.2em] text-white/45">
+                        Ideal Tenant Categories
+                    </p>
 
-                        {/* Category list */}
-                        <div className="grid grid-cols-2 sm:grid-cols-3">
-                            {tenantCategories.map(
-                                (category, index) => (
-                                    <motion.div
-                                        key={category}
-                                        initial={{
-                                            opacity: 0,
-                                            y: 12,
-                                        }}
-                                        whileInView={{
-                                            opacity: 1,
-                                            y: 0,
-                                        }}
-                                        viewport={{
-                                            once: true,
-                                        }}
-                                        transition={{
-                                            delay: index * 0.04,
-                                            duration: 0.5,
-                                            ease: [
-                                                0.22,
-                                                1,
-                                                0.36,
-                                                1,
-                                            ],
-                                        }}
-                                        className="group border-b border-white/10 py-6 pr-5 sm:pr-8"
-                                    >
-                                        <div className="flex items-center justify-between gap-4">
-                                            <span className="text-sm text-white/65 transition-colors duration-300 group-hover:text-white">
-                                                {category}
-                                            </span>
-
-                                            <ArrowUpRight
-                                                size={15}
-                                                strokeWidth={1.6}
-                                                className="text-white/20 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-white/70"
-                                            />
-                                        </div>
-                                    </motion.div>
-                                ),
-                            )}
-                        </div>
+                    <div className="mt-6 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-3 lg:gap-5">
+                        {tenantCategories.map(({ name, icon: Icon }, index) => (
+                            <motion.div
+                                key={name}
+                                initial={{ opacity: 0, y: 12 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{
+                                    delay: index * 0.04,
+                                    duration: 0.5,
+                                    ease: [0.22, 1, 0.36, 1],
+                                }}
+                                className="flex min-h-36 flex-col items-start justify-between gap-6 rounded-lg border border-white/15 bg-black/10 p-4 transition-colors duration-300 hover:bg-black/15 sm:min-h-40 sm:p-6"
+                            >
+                                <span className="inline-flex h-11 w-11 items-center justify-center rounded-md bg-white/10 text-white/80">
+                                    <Icon size={20} strokeWidth={1.6} aria-hidden="true" />
+                                </span>
+                                <span className="text-sm font-medium text-white/80 sm:text-base">
+                                    {name}
+                                </span>
+                            </motion.div>
+                        ))}
                     </div>
                 </motion.div>
 
@@ -203,14 +188,14 @@ export function BrandPartnership() {
 
                     <div className="flex flex-col gap-3 sm:flex-row md:flex-col">
                         <Button
-                            href="#partnership"
+                            href="/contact"
                             variant="primary"
                         >
                             Become a Dominion Brand
                         </Button>
 
                         <a
-                            href="#contact"
+                            href="/contact"
                             className="inline-flex items-center justify-center gap-2 px-5 py-3.5 text-sm font-medium !text-white transition-colors duration-300 hover:text-white/65"
                         >
                             Register your interest

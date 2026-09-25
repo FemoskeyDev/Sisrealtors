@@ -38,9 +38,9 @@ const destinations = [
     {
         id: "entertainment",
         number: "03",
-        title: "Entertainment",
+        title: "Amusement Park",
         description:
-            "A destination for family experiences, activities, social moments and entertainment throughout the day.",
+            "A destination for family activities, social moments and amusement park fun throughout the day.",
         position: {
             left: "72%",
             top: "66%",
@@ -131,7 +131,7 @@ export function Destination() {
                     >
                         <p className="text-base leading-7 text-black/60 md:text-lg md:leading-8">
                             One destination bringing retail, hospitality,
-                            entertainment, dining and lifestyle together.
+                            the amusement park, dining and lifestyle together.
                         </p>
                     </motion.div>
                 </div>

@@ -7,13 +7,15 @@ const navItems = [
   { label: "Experience", href: "#experience" },
   { label: "Mall", href: "#mall" },
   { label: "Hotel", href: "#hotel" },
-  { label: "Entertainment", href: "#entertainment" },
-  { label: "Location", href: "#location" },
+  { label: "Amusement Park", href: "#entertainment" },
   { label: "Brands", href: "#brands" },
+  { label: "Location", href: "#location" },
   { label: "About", href: "#about" },
+  { label: "Contact Us", href: "/contact" },
 ];
 
 export function Navbar() {
+  const isContactPage = window.location.pathname.replace(/\/+$/, "") === "/contact";
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -57,7 +59,7 @@ export function Navbar() {
           <div className="flex h-20 items-center justify-between lg:h-24">
             {/* Logo */}
             <a
-              href="#"
+              href={isContactPage ? "/" : "#"}
               onClick={closeMobileMenu}
               aria-label="SIS Realtors Limited"
               className="relative z-50 flex shrink-0 items-center"
@@ -77,7 +79,11 @@ export function Navbar() {
               {navItems.map((item) => (
                 <a
                   key={item.label}
-                  href={item.href}
+                  href={
+                    isContactPage && item.href.startsWith("#")
+                      ? `/${item.href}`
+                      : item.href
+                  }
                   className="whitespace-nowrap text-sm font-normal !text-black/60 transition-colors duration-300 hover:!text-black"
                 >
                   {item.label}
@@ -87,7 +93,7 @@ export function Navbar() {
 
             {/* Desktop CTA */}
             <a
-              href="#partner"
+              href="/contact"
               className="hidden shrink-0 items-center gap-2 bg-black px-5 py-3 text-sm font-medium !text-white transition-transform duration-300 hover:-translate-y-0.5 lg:inline-flex"
             >
               Partner With Us
@@ -132,7 +138,11 @@ export function Navbar() {
               {navItems.map((item, index) => (
                 <a
                   key={item.label}
-                  href={item.href}
+                  href={
+                    isContactPage && item.href.startsWith("#")
+                      ? `/${item.href}`
+                      : item.href
+                  }
                   onClick={closeMobileMenu}
                   className={[
                     "border-b border-black/10 py-5 text-[clamp(2rem,7vw,3.5rem)] font-medium leading-none tracking-[-0.04em] !text-black",
@@ -144,20 +154,7 @@ export function Navbar() {
               ))}
             </nav>
 
-            <div className="mt-auto border-t border-black/10 py-6">
-              <a
-                href="#partner"
-                onClick={closeMobileMenu}
-                className="inline-flex items-center gap-2 bg-black px-6 py-4 text-sm font-medium !text-white"
-              >
-                Partner With Us
-                <ArrowUpRight size={16} strokeWidth={1.8} />
-              </a>
 
-              <p className="mt-5 text-xs uppercase tracking-[0.18em] !text-black/40">
-                Retail · Lifestyle · Hospitality · Entertainment
-              </p>
-            </div>
           </Container>
         </div>
       </div>

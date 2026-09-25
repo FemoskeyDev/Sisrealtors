@@ -41,7 +41,7 @@ export function Hero() {
             className="max-w-md lg:pb-2"
           >
             <p className="text-base leading-7 text-black/60 md:text-lg">
-              A new destination for shopping, dining, entertainment,
+              A new destination for shopping, dining, the amusement park,
               hospitality and lifestyle rising along the Lekki–Epe corridor.
             </p>
 
@@ -55,7 +55,7 @@ export function Hero() {
               </a>
 
               <a
-                href="#partner"
+                href="/contact"
                 className="inline-flex items-center gap-2 border border-black/15 bg-white px-6 py-3.5 text-sm font-medium !text-black transition-colors duration-300 hover:bg-black hover:!text-white"
               >
                 Partner With Us
@@ -111,7 +111,7 @@ export function Hero() {
 
         {/* Supporting category line */}
         <div className="flex justify-between border-b border-black/10 py-5 text-xs uppercase tracking-[0.18em] text-black/45">
-          <span>Retail · Lifestyle · Hospitality · Entertainment</span>
+          <span>Retail · Lifestyle · Hospitality · Amusement Park</span>
 
           <span className="hidden md:block">
             Lagos, Nigeria

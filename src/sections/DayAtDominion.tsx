@@ -43,9 +43,9 @@ const dayTimeline = [
         time: "4:00 PM",
         title: "Play.",
         description:
-            "Entertainment, family experiences and activities.",
+            "Amusement park activities and family experiences.",
         image: playImage,
-        label: "Entertainment",
+        label: "Amusement Park",
         duration: 5000,
     },
     {

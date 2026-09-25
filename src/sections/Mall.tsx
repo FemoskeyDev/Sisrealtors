@@ -2,8 +2,10 @@ import { motion } from "motion/react";
 import { Container } from "../components/Container";
 import { SectionLabel } from "../components/SectionLabel";
 import { Button } from "../components/Button";
+import { ImageInspectionGallery } from "../components/ImageInspectionGallery";
 
-import mallImage from "../assets/images/dominion-shop.jpeg";
+import diningImage from "../assets/images/dominion-dine.jpeg";
+import destinationImage from "../assets/images/dominion-hero-alt.jpeg";
 
 // ============================================================
 // MALL DATA
@@ -130,22 +132,20 @@ export function Mall() {
                         duration: 1,
                         ease: [0.22, 1, 0.36, 1],
                     }}
-                    className="mt-16 overflow-hidden md:mt-24"
+                    className="mt-16 md:mt-24"
                 >
-                    <div className="aspect-[16/9] overflow-hidden bg-neutral-100 md:min-h-[620px] lg:min-h-[720px]">
-                        <motion.img
-                            src={mallImage}
-                            alt="Dominion Mall"
-                            className="h-full w-full object-cover"
-                            initial={{ scale: 1.05 }}
-                            whileInView={{ scale: 1 }}
-                            viewport={{ once: true }}
-                            transition={{
-                                duration: 1.2,
-                                ease: [0.22, 1, 0.36, 1],
-                            }}
-                        />
-                    </div>
+                    <ImageInspectionGallery
+                        images={[
+                            {
+                                src: diningImage,
+                                alt: "Dominion Leisure City mall rendering with landscaped grounds",
+                            },
+                            {
+                                src: destinationImage,
+                                alt: "Dominion Leisure City mall rendering with parking and landscaped grounds",
+                            },
+                        ]}
+                    />
                 </motion.div>
 
                 {/* ==================================================
@@ -212,9 +212,6 @@ export function Mall() {
                 >
                     <div className="flex flex-col gap-8 border-b border-black/10 pb-8 md:flex-row md:items-end md:justify-between">
                         <div>
-                            <SectionLabel>
-                                Brand Categories
-                            </SectionLabel>
 
                             <h3 className="mt-4 max-w-xl text-2xl font-normal tracking-[-0.03em] md:text-3xl">
                                 A destination built around the way people
@@ -269,7 +266,7 @@ export function Mall() {
                     </Button>
 
                     <Button
-                        href="#partnership"
+                        href="/contact"
                         variant="secondary"
                     >
                         Become a Dominion Brand
