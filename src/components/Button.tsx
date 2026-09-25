@@ -4,6 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 interface ButtonProps {
     children: ReactNode;
     href?: string;
+    onClick?: () => void;
     type?: "button" | "submit";
     disabled?: boolean;
     variant?: "primary" | "secondary" | "tertiary" | "link";
@@ -16,6 +17,7 @@ interface ButtonProps {
 export function Button({
     children,
     href,
+    onClick,
     type = "button",
     disabled = false,
     variant = "primary",
@@ -26,26 +28,26 @@ export function Button({
 }: ButtonProps) {
     const variantStyles = {
         primary: [
-            "bg-brand-primary text-brand-dark",
-            "hover:bg-[#e0aa3d]",
-            "active:bg-[#c58f25]",
+            "bg-[#D39B2A] text-[#051B41]",
+            "hover:bg-[#E0AA3D]",
+            "active:bg-[#C58F25]",
         ].join(" "),
 
         secondary: [
-            "bg-brand-secondary text-white",
-            "hover:bg-[#092653]",
-            "active:bg-[#041630]",
+            "bg-[#051B41] text-white",
+            "hover:bg-[#D39B2A] hover:text-[#051B41]",
+            "active:bg-[#C58F25] active:text-[#051B41]",
         ].join(" "),
 
         tertiary: [
             "bg-gray-200 text-black",
-            "hover:bg-amber-500 hover:text-white",
+            "hover:bg-[#051B41] hover:text-white",
             "active:bg-[#092653] active:text-white",
         ].join(" "),
 
         link: [
             "bg-transparent text-black",
-            "hover:text-brand-secondary",
+            "hover:text-[#051B41]",
             "active:text-[#092653]",
         ].join(" "),
     };
@@ -53,12 +55,9 @@ export function Button({
     const interactionStyles = [
         "inline-flex items-center justify-center gap-3",
         "px-5 py-3.5 text-sm font-medium",
-        "transition-[background-color,color,transform] duration-300",
-        "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-dark",
-        variant !== "link" ? "hover:-translate-y-0.5" : "",
-        disabled
-            ? "cursor-not-allowed opacity-60 hover:translate-y-0"
-            : "",
+        "transition-colors duration-300",
+        "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#051B41]",
+        disabled ? "cursor-not-allowed opacity-60" : "",
     ].join(" ");
 
     const buttonClassName = [
@@ -69,12 +68,13 @@ export function Button({
         .filter(Boolean)
         .join(" ");
 
-    const resolvedIcon = icon ?? (
-        <ArrowUpRight
-            size={16}
-            strokeWidth={1.8}
-        />
-    );
+    const resolvedIcon =
+        icon ?? (
+            <ArrowUpRight
+                size={16}
+                strokeWidth={1.8}
+            />
+        );
 
     const content = (
         <>
@@ -97,7 +97,7 @@ export function Button({
                         ? (event) => {
                               event.preventDefault();
                           }
-                        : undefined
+                        : onClick
                 }
                 className={buttonClassName}
             >
@@ -110,6 +110,7 @@ export function Button({
         <button
             type={type}
             disabled={disabled}
+            onClick={onClick}
             className={buttonClassName}
         >
             {content}

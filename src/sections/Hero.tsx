@@ -1,5 +1,6 @@
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { motion } from "motion/react";
+import { Button } from "../components/Button";
 import { Container } from "../components/Container";
 
 export function Hero() {
@@ -46,13 +47,13 @@ export function Hero() {
             </p>
 
             <div className="mt-7 flex flex-wrap gap-3">
-              <a
+              <Button
                 href="/contact"
-                className="inline-flex items-center gap-2 !bg-[#051B41] px-6 py-3.5 text-sm font-medium !text-white transition-colors duration-300 hover:!bg-[#D39B2A] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-dark"
+                variant="secondary"
+                className="gap-2 px-6"
               >
                 Partner With Us
-                <ArrowUpRight size={16} strokeWidth={1.8} />
-              </a>
+              </Button>
 
               <a
                 href="#experience"
