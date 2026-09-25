@@ -14,7 +14,6 @@ const navItems = [
     { label: "Brands", href: "#brands" },
     { label: "Location", href: "#location" },
     { label: "About", href: "#about" },
-    { label: "Contact Us", href: "/contact" },
 ];
 
 export function Navbar() {
