@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 import { Container } from "../components/Container";
 import { SectionLabel } from "../components/SectionLabel";
 
-import shopImage from "../assets/images/dominion-shop.jpeg";
+import shopImage from "../assets/images/dominion-shop.jpg";
 import dineImage from "../assets/images/dominion-dine.webp";
 import playImage from "../assets/images/dominion-play.jpg";
 import stayImage from "../assets/images/dominion-stay.avif";

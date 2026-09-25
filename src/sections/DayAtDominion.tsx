@@ -5,7 +5,7 @@ import { Container } from "../components/Container";
 import { SectionLabel } from "../components/SectionLabel";
 
 import morningImage from "../assets/images/dominion-intro-01.jpeg";
-import exploreImage from "../assets/images/dominion-shop.jpeg";
+import exploreImage from "../assets/images/dominion-shop.jpg";
 import dineImage from "../assets/images/dominion-dine.jpeg";
 import playImage from "../assets/images/dominion-play.jpeg";
 import eveningImage from "../assets/images/dominion-intro-02.jpeg";
