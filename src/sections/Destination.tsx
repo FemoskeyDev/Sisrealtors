@@ -3,7 +3,6 @@ import { ArrowUpRight } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { Container } from "../components/Container";
 import { SectionLabel } from "../components/SectionLabel";
-import { Button } from "../components/Button";
 
 import masterplanImage from "../assets/images/dominion-intro-02.jpeg";
 
@@ -357,12 +356,7 @@ export function Destination() {
                                 </AnimatePresence>
                             </div>
 
-                            {/* CTA */}
-                            <div className="mt-12">
-                                <Button href="#partnership">
-                                    Explore Dominion
-                                </Button>
-                            </div>
+                          
                         </div>
                     </div>
                 </motion.div>

@@ -4,7 +4,7 @@ import { SectionLabel } from "../components/SectionLabel";
 import { Button } from "../components/Button";
 import { ImageInspectionGallery } from "../components/ImageInspectionGallery";
 
-import diningImage from "../assets/images/dominion-dine.jpeg";
+import diningImage from "../assets/images/mall.jpeg";
 import destinationImage from "../assets/images/dominion-hero-alt.jpeg";
 
 // ============================================================
@@ -28,15 +28,6 @@ const mallStats = [
         unit: "SQM",
         label: "Total Lettable Area",
     },
-];
-
-const mallCategories = [
-    "Fashion",
-    "Beauty",
-    "Technology",
-    "Home & Lifestyle",
-    "Dining",
-    "Entertainment",
 ];
 
 export function Mall() {
@@ -194,56 +185,6 @@ export function Mall() {
                 </div>
 
                 {/* ==================================================
-                    BRAND CATEGORIES
-                ================================================== */}
-
-                <motion.div
-                    initial={{ opacity: 0, y: 24 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{
-                        once: true,
-                        margin: "-10% 0px",
-                    }}
-                    transition={{
-                        duration: 0.8,
-                        ease: [0.22, 1, 0.36, 1],
-                    }}
-                    className="mt-16 md:mt-24"
-                >
-                    <div className="flex flex-col gap-8 border-b border-black/10 pb-8 md:flex-row md:items-end md:justify-between">
-                        <div>
-
-                            <h3 className="mt-4 max-w-xl text-2xl font-normal tracking-[-0.03em] md:text-3xl">
-                                A destination built around the way people
-                                shop, discover and experience.
-                            </h3>
-                        </div>
-                    </div>
-
-                    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6">
-                        {mallCategories.map((category, index) => (
-                            <motion.div
-                                key={category}
-                                initial={{ opacity: 0, y: 16 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{
-                                    once: true,
-                                    margin: "-5% 0px",
-                                }}
-                                transition={{
-                                    delay: index * 0.06,
-                                    duration: 0.6,
-                                    ease: [0.22, 1, 0.36, 1],
-                                }}
-                                className="border-b border-black/10 py-6 pr-5 text-sm text-black/55 md:py-7 md:pr-6 lg:border-b-0 lg:border-r lg:px-5 lg:first:pl-0 lg:last:border-r-0"
-                            >
-                                {category}
-                            </motion.div>
-                        ))}
-                    </div>
-                </motion.div>
-
-                {/* ==================================================
                     CALL TO ACTIONS
                 ================================================== */}
 
@@ -261,16 +202,14 @@ export function Mall() {
                     }}
                     className="mt-12 flex flex-col gap-4 sm:flex-row"
                 >
-                    <Button href="#brands">
-                        Explore the Mall
-                    </Button>
 
                     <Button
                         href="/contact"
-                        variant="secondary"
+                        variant="tertiary"
                     >
                         Become a Dominion Brand
                     </Button>
+
                 </motion.div>
             </Container>
         </section>

@@ -8,7 +8,7 @@ import destinationImage from "../assets/images/dominion-hero-alt.jpeg";
 
 export function About() {
     return (
-        <section id="about" className="relative isolate overflow-hidden py-16 md:py-24 lg:py-32">
+        <section id="about" className="relative isolate overflow-hidden p-16 md:p-24 lg:py-32">
             {/* Full-width Dominion visual backdrop */}
             <div aria-hidden="true" className="absolute inset-0 -z-10">
                 <img
@@ -33,8 +33,8 @@ export function About() {
                             }}
                         >
                             <SectionLabel>ABOUT US</SectionLabel>
-                            <h2 className="mt-6 max-w-xl text-[clamp(2.5rem,5vw,5rem)] font-normal leading-[0.98] tracking-[-0.05em]">
-                                S.I.S. Realtors Limited
+                            <h2 className="mt-6 max-w-xl text-[clamp(2.5rem,5vw,5rem)] font-normal leading-[0.98] tracking-[-0.05em] font-serif italic">
+                               S.I.S. Realtors Limited
                             </h2>
                         </motion.div>
 
@@ -59,7 +59,7 @@ export function About() {
                     </div>
 
                     {/* Architectural image composition */}
-                    <div className="grid gap-4 px-6 sm:px-10 md:gap-6 md:px-14 lg:grid-cols-[0.78fr_1.22fr] lg:items-end lg:gap-8 lg:px-20">
+                    <div className="grid gap-4 p-6 sm:p-10 md:gap-6 md:p-14 lg:grid-cols-[0.78fr_1.22fr] lg:items-end lg:gap-8 lg:p-20">
                         <motion.div
                             initial={{ opacity: 0, y: 28 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -96,21 +96,6 @@ export function About() {
                         </motion.div>
                     </div>
 
-                    {/* Closing statement */}
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, margin: "-10% 0px" }}
-                        transition={{
-                            delay: 0.1,
-                            duration: 0.8,
-                            ease: [0.22, 1, 0.36, 1],
-                        }}
-                        className="mx-6 mt-10 border-t border-black/10 py-8 text-[clamp(1.75rem,3.5vw,3.5rem)] leading-[1.08] tracking-[-0.04em] text-black/75 sm:mx-10 md:mx-14 md:mt-14 md:py-12 lg:mx-20 lg:mt-20"
-                    >
-                        We build places that people want to live in, work in,
-                        invest in and experience.
-                    </motion.p>
                 </div>
             </Container>
         </section>

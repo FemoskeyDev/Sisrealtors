@@ -47,20 +47,21 @@ export function Hero() {
 
             <div className="mt-7 flex flex-wrap gap-3">
               <a
+                href="/contact"
+                className="inline-flex items-center gap-2 !bg-[#051B41] px-6 py-3.5 text-sm font-medium !text-white transition-colors duration-300 hover:!bg-[#D39B2A] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-dark"
+              >
+                Partner With Us
+                <ArrowUpRight size={16} strokeWidth={1.8} />
+              </a>
+
+              <a
                 href="#experience"
-                className="inline-flex items-center gap-2 bg-black px-6 py-3.5 text-sm font-medium !text-white transition-transform duration-300 hover:-translate-y-0.5"
+                className="inline-flex items-center gap-2 bg-orange-100 px-6 py-3.5 text-sm font-medium !text-black transition-colors duration-300 hover:!bg-[#D39B2A] hover:!text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-dark"
               >
                 Discover Dominion
                 <ArrowUpRight size={16} strokeWidth={1.8} />
               </a>
 
-              <a
-                href="/contact"
-                className="inline-flex items-center gap-2 border border-black/15 bg-white px-6 py-3.5 text-sm font-medium !text-black transition-colors duration-300 hover:bg-black hover:!text-white"
-              >
-                Partner With Us
-                <ArrowUpRight size={16} strokeWidth={1.8} />
-              </a>
             </div>
           </motion.div>
         </div>

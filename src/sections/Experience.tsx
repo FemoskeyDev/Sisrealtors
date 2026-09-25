@@ -96,8 +96,10 @@ export function Experience() {
                         }}
                         className="mt-5 max-w-5xl text-[clamp(2.25rem,4vw,4.5rem)] font-normal leading-[1.02] tracking-[-0.04em]"
                     >
-                        Four ways to experience a destination designed around
-                        how people shop, connect, gather, stay and return.
+                        Four ways to experience {" "}
+                            <span className="font-serif italic text-black/45">
+                                Dominion Leisure City.
+                            </span>  
                     </motion.h2>
                 </div>
 

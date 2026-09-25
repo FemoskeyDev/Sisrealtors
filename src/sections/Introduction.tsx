@@ -58,7 +58,7 @@ export function Introduction() {
                     >
                         <p className="max-w-5xl text-[clamp(2rem,3.8vw,4rem)] font-normal leading-[1.08] tracking-[-0.025em]">
                             More than a mall.{" "}
-                            <span className="text-black/45">
+                            <span className="text-black/45 font-serif italic">
                                 A destination designed around how people shop, connect,
                                 experience, stay and return.
                             </span>

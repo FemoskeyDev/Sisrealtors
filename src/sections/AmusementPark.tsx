@@ -1,6 +1,5 @@
 import { ZoomIn } from "lucide-react";
 import { motion } from "motion/react";
-import { Button } from "../components/Button";
 import { Container } from "../components/Container";
 import { ImageInspectionGallery } from "../components/ImageInspectionGallery";
 import { SectionLabel } from "../components/SectionLabel";
@@ -236,24 +235,7 @@ export function AmusementPark() {
                         </motion.div>
                     ))}
                 </div>
-
-                {/* ==================================================
-                    SECTION CTA
-                ================================================== */}
-
-                <motion.div
-                    initial={{ opacity: 0, y: 24 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: "-10% 0px" }}
-                    transition={{
-                        delay: 0.1,
-                        duration: 0.8,
-                        ease: [0.22, 1, 0.36, 1],
-                    }}
-                    className="mt-10"
-                >
-                    <Button href="#contact">DISCOVER ENTERTAINMENT</Button>
-                </motion.div>
+                
             </Container>
         </section>
     );

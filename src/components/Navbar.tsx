@@ -94,7 +94,7 @@ export function Navbar() {
             {/* Desktop CTA */}
             <a
               href="/contact"
-              className="hidden shrink-0 items-center gap-2 bg-black px-5 py-3 text-sm font-medium !text-white transition-transform duration-300 hover:-translate-y-0.5 lg:inline-flex"
+              className="hidden shrink-0 items-center gap-2 !bg-[#051B41] px-5 py-3 text-sm font-medium !text-white transition-all duration-300 hover:-translate-y-0.5 hover:!bg-[#092653] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-dark lg:inline-flex"
             >
               Partner With Us
               <ArrowUpRight size={16} strokeWidth={1.8} />

@@ -1,5 +1,11 @@
 import { motion } from "motion/react";
-import { ArrowUpRight } from "lucide-react";
+import {
+    BedDouble,
+    UsersRound,
+    Utensils,
+    CalendarDays,
+    type LucideIcon,
+} from "lucide-react";
 import { Container } from "../components/Container";
 import { SectionLabel } from "../components/SectionLabel";
 import { Button } from "../components/Button";
@@ -11,30 +17,36 @@ import hotelImage from "../assets/images/hotel.jpeg";
 // Content follows the Dominion Leisure City project brief.
 // ============================================================
 
-const hotelExperiences = [
+interface HotelExperience {
+    title: string;
+    description: string;
+    icon: LucideIcon;
+}
+
+const hotelExperiences: HotelExperience[] = [
     {
-        number: "01",
         title: "Rooms",
         description:
             "Comfortable accommodation for business and leisure.",
+        icon: BedDouble,
     },
     {
-        number: "02",
         title: "Meetings",
         description:
             "Spaces designed for corporate meetings and conferences.",
+        icon: UsersRound,
     },
     {
-        number: "03",
         title: "Dining",
         description:
             "Food and beverage experiences for guests and visitors.",
+        icon: Utensils,
     },
     {
-        number: "04",
         title: "Events",
         description:
-            "A hospitality environment capable of supporting major occasions and gatherings.",
+            "Hospitality environment capable of supporting all gatherings.",
+        icon: CalendarDays,
     },
 ];
 
@@ -105,13 +117,12 @@ export function Hotel() {
                         className="max-w-lg lg:pb-2"
                     >
                         <p className="text-base leading-7 text-white/60 md:text-lg md:leading-8">
-                            Dominion Leisure City’s 12-storey 4-star
-                            hotel extends the destination beyond retail.
-                            Designed for business travellers, tourists,
-                            conference attendees and international
-                            visitors, the hotel provides a premium
-                            hospitality environment within the wider
-                            Dominion ecosystem.
+                            Dominion Leisure City’s 12-storey 4-star hotel
+                            extends the destination beyond retail. Designed
+                            for business travellers, tourists, conference
+                            attendees and international visitors, the hotel
+                            provides a premium hospitality environment within
+                            the wider Dominion ecosystem.
                         </p>
                     </motion.div>
                 </div>
@@ -161,93 +172,6 @@ export function Hotel() {
                 </motion.div>
 
                 {/* ==================================================
-                    HOTEL EXPERIENCES
-                ================================================== */}
-
-                <div className="mt-16 md:mt-24">
-                    <div className="mb-8 flex items-end justify-between border-b border-white/10 pb-6">
-                        <div>
-                            <SectionLabel dark>
-                                The Hospitality Experience
-                            </SectionLabel>
-
-                            <h3 className="mt-4 max-w-2xl text-[clamp(2rem,3.5vw,3.5rem)] font-normal leading-[1.02] tracking-[-0.04em]">
-                                Everything you need to make staying part of
-                                the experience.
-                            </h3>
-                        </div>
-                    </div>
-
-                    <div className="grid md:grid-cols-2">
-                        {hotelExperiences.map(
-                            (experience, index) => (
-                                <motion.div
-                                    key={experience.number}
-                                    initial={{
-                                        opacity: 0,
-                                        y: 24,
-                                    }}
-                                    whileInView={{
-                                        opacity: 1,
-                                        y: 0,
-                                    }}
-                                    viewport={{
-                                        once: true,
-                                        margin: "-10% 0px",
-                                    }}
-                                    transition={{
-                                        delay: index * 0.08,
-                                        duration: 0.7,
-                                        ease: [
-                                            0.22,
-                                            1,
-                                            0.36,
-                                            1,
-                                        ],
-                                    }}
-                                    className={[
-                                        "group border-b border-white/10 py-8",
-                                        index % 2 === 0
-                                            ? "md:border-r md:pr-10"
-                                            : "md:pl-10",
-                                        index < 2
-                                            ? "md:pt-10"
-                                            : "md:pt-10",
-                                    ].join(" ")}
-                                >
-                                    <div className="flex gap-6">
-                                        {/* Number */}
-                                        <span className="pt-1 text-xs text-white/25">
-                                            {experience.number}
-                                        </span>
-
-                                        <div className="flex-1">
-                                            <div className="flex items-start justify-between gap-6">
-                                                <h4 className="text-2xl font-medium tracking-[-0.03em]">
-                                                    {experience.title}
-                                                </h4>
-
-                                                <ArrowUpRight
-                                                    size={18}
-                                                    strokeWidth={1.6}
-                                                    className="text-white/20 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-white"
-                                                />
-                                            </div>
-
-                                            <p className="mt-4 max-w-md text-sm leading-7 text-white/50 md:text-base">
-                                                {
-                                                    experience.description
-                                                }
-                                            </p>
-                                        </div>
-                                    </div>
-                                </motion.div>
-                            ),
-                        )}
-                    </div>
-                </div>
-
-                {/* ==================================================
                     CALL TO ACTION
                 ================================================== */}
 
@@ -263,22 +187,79 @@ export function Hotel() {
                         duration: 0.8,
                         ease: [0.22, 1, 0.36, 1],
                     }}
-                    className="mt-16 flex flex-col gap-8 border-t border-white/10 pt-10 md:mt-24 md:flex-row md:items-end md:justify-between"
+                    className="mt-12 flex flex-col gap-8 pt-10 md:mt-16 md:flex-row md:items-end md:justify-between"
                 >
                     <div>
-                        <p className="text-xs uppercase tracking-[0.2em] text-white/30">
-                            Hospitality at Dominion
-                        </p>
-
-                        <p className="mt-4 max-w-2xl text-[clamp(1.75rem,3vw,3rem)] leading-[1.05] tracking-[-0.035em] text-white/65">
-                            Stay for the night. Stay for the experience.
+                        <p className="max-w-2xl text-[clamp(1.75rem,3vw,3rem)] leading-[1.05] tracking-[-0.035em] text-white/65">
+                            Everything you need to make staying part of the experience.
                         </p>
                     </div>
 
-                    <Button href="#partnership">
+                    <Button href="#hotel" variant="tertiary">
                         Discover the Hotel
                     </Button>
                 </motion.div>
+
+                {/* ==================================================
+                    HOTEL EXPERIENCES
+                ================================================== */}
+
+                <div className="mt-12 grid gap-4 md:grid-cols-2">
+                    {hotelExperiences.map((experience, index) => {
+                        const Icon = experience.icon;
+
+                        return (
+                            <motion.div
+                                key={experience.title}
+                                initial={{
+                                    opacity: 0,
+                                    y: 24,
+                                }}
+                                whileInView={{
+                                    opacity: 1,
+                                    y: 0,
+                                }}
+                                viewport={{
+                                    once: true,
+                                    margin: "-10% 0px",
+                                }}
+                                transition={{
+                                    delay: index * 0.08,
+                                    duration: 0.7,
+                                    ease: [
+                                        0.22,
+                                        1,
+                                        0.36,
+                                        1,
+                                    ],
+                                }}
+                                className="group"
+                            >
+                                <div className="flex min-h-[220px] flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.03] p-7 transition-colors duration-300 hover:border-white/20 hover:bg-white/[0.05] md:p-8">
+                                    {/* Experience icon */}
+                                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/[0.06] text-white/55 transition-colors duration-300 group-hover:bg-white/10 group-hover:text-white">
+                                        <Icon
+                                            size={19}
+                                            strokeWidth={1.6}
+                                        />
+                                    </div>
+
+                                    {/* Experience content */}
+                                    <div className="mt-10">
+                                        <h4 className="text-2xl font-medium tracking-[-0.03em]">
+                                            {experience.title}
+                                        </h4>
+
+                                        <p className="mt-4 max-w-md text-sm leading-7 text-white/50 md:text-base">
+                                            {experience.description}
+                                        </p>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        );
+                    })}
+                </div>
+
             </Container>
         </section>
     );

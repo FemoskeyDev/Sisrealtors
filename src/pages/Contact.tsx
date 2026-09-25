@@ -84,7 +84,10 @@ export function ContactPage() {
                     >
                         <SectionLabel>LET&apos;S CONNECT.</SectionLabel>
                         <h1 className="mt-5 max-w-5xl text-[clamp(3rem,6vw,6rem)] font-normal leading-[0.92] tracking-[-0.055em]">
-                            GET IN TOUCH WITH US.
+                            Get in Touch {" "}
+                            <span className="font-serif italic text-black/45">
+                                with Us.
+                            </span>
                         </h1>
                     </motion.div>
 
@@ -100,7 +103,7 @@ export function ContactPage() {
                 </div>
 
                 {/* Contact form and company details */}
-                <div className="mt-16 grid gap-16 border-t border-black/10 pt-10 md:mt-24 md:pt-14 lg:grid-cols-[1.2fr_0.8fr] lg:gap-24">
+                <div className="mt-16 grid gap-16 pt-10 md:mt-20 md:pt-14 lg:grid-cols-[1.2fr_0.8fr] lg:gap-24">
                     <motion.form
                         onSubmit={handleSubmit}
                         aria-busy={isSubmitting}

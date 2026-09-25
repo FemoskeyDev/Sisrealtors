@@ -1,6 +1,5 @@
 import { motion } from "motion/react";
 import {
-    ArrowUpRight,
     BriefcaseBusiness,
     Gamepad2,
     Heart,
@@ -189,21 +188,11 @@ export function BrandPartnership() {
                     <div className="flex flex-col gap-3 sm:flex-row md:flex-col">
                         <Button
                             href="/contact"
-                            variant="primary"
+                            variant="tertiary"
                         >
                             Become a Dominion Brand
                         </Button>
 
-                        <a
-                            href="/contact"
-                            className="inline-flex items-center justify-center gap-2 px-5 py-3.5 text-sm font-medium !text-white transition-colors duration-300 hover:text-white/65"
-                        >
-                            Register your interest
-                            <ArrowUpRight
-                                size={16}
-                                strokeWidth={1.8}
-                            />
-                        </a>
                     </div>
                 </motion.div>
             </Container>
