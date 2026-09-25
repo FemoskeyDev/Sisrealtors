@@ -147,9 +147,9 @@ export function BrandPartnership() {
                                     duration: 0.5,
                                     ease: [0.22, 1, 0.36, 1],
                                 }}
-                                className="flex min-h-36 flex-col items-start justify-between gap-6 rounded-lg border border-white/15 bg-black/10 p-4 transition-colors duration-300 hover:bg-black/15 sm:min-h-40 sm:p-6"
+                                className="flex min-h-36 flex-col items-start justify-between gap-6 border border-white/15 bg-black/10 p-4 transition-colors duration-300 hover:bg-black/15 sm:min-h-40 sm:p-6"
                             >
-                                <span className="inline-flex h-11 w-11 items-center justify-center rounded-md bg-white/10 text-white/80">
+                                <span className="inline-flex h-11 w-11 items-center justify-center bg-white/10 text-white/80">
                                     <Icon size={20} strokeWidth={1.6} aria-hidden="true" />
                                 </span>
                                 <span className="text-sm font-medium text-white/80 sm:text-base">

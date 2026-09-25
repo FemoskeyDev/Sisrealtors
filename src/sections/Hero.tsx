@@ -61,7 +61,6 @@ export function Hero() {
                 Discover Dominion
                 <ArrowUpRight size={16} strokeWidth={1.8} />
               </a>
-
             </div>
           </motion.div>
         </div>
@@ -80,24 +79,25 @@ export function Hero() {
           <div className="relative aspect-[16/9] w-full bg-neutral-900 md:min-h-[560px] lg:min-h-[680px]">
             <video
               autoPlay
+              controls
               muted
               loop
               playsInline
               preload="metadata"
-              poster="/videos/dominion-hero-alt.jpeg"
+              poster="/videos/dominion-hero-poster.jpeg"
               className="absolute inset-0 h-full w-full object-cover"
             >
               <source
-                src="/videos/dominion-hero.mp4"
+                src="https://pub-7c3ca7b187404b74b544831e9bd01fe4.r2.dev/dominion-hero.mp4"
                 type="video/mp4"
               />
             </video>
 
             {/* Cinematic overlay */}
-            <div className="absolute inset-0 bg-black/10" />
+            <div className="pointer-events-none absolute inset-0 bg-black/10" />
 
             {/* Video metadata */}
-            <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-5 text-white md:p-8">
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-end justify-between p-5 text-white md:p-8">
               <p className="text-xs uppercase tracking-[0.2em] text-white/70">
                 Lekki–Epe Expressway · Lagos, Nigeria
               </p>

@@ -235,9 +235,9 @@ export function Hotel() {
                                 }}
                                 className="group"
                             >
-                                <div className="flex min-h-[220px] flex-col justify-between rounded-2xl border border-white/10 bg-white/[0.03] p-7 transition-colors duration-300 hover:border-white/20 hover:bg-white/[0.05] md:p-8">
+                                <div className="flex min-h-[220px] flex-col justify-between border border-white/10 bg-white/[0.03] p-7 transition-colors duration-300 hover:border-white/20 hover:bg-white/[0.05] md:p-8">
                                     {/* Experience icon */}
-                                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-white/[0.06] text-white/55 transition-colors duration-300 group-hover:bg-white/10 group-hover:text-white">
+                                    <div className="flex h-10 w-10 items-center justify-center bg-white/[0.06] text-white/55 transition-colors duration-300 group-hover:bg-white/10 group-hover:text-white">
                                         <Icon
                                             size={19}
                                             strokeWidth={1.6}

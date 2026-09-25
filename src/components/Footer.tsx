@@ -11,14 +11,12 @@ const exploreLinks = [
     { label: "Mall", href: "#mall" },
     { label: "Hotel", href: "#hotel" },
     { label: "Amusement Park", href: "#entertainment" },
-    { label: "Dining", href: "#experience" },
     { label: "Location", href: "#location" },
     { label: "Brands", href: "#brands" },
 ];
 
 const companyLinks = [
     { label: "About SIS Realtors", href: "#about" },
-    { label: "News", href: "#news" },
     { label: "Contact", href: "/contact" },
 ];
 
@@ -26,25 +24,6 @@ const opportunityLinks = [
     { label: "Become a Tenant", href: "/contact" },
     { label: "Partnerships", href: "/contact" },
     { label: "Investor Relations", href: "/contact" },
-];
-
-const socialLinks = [
-    {
-        label: "Instagram",
-        href: "#",
-    },
-    {
-        label: "Facebook",
-        href: "#",
-    },
-    {
-        label: "LinkedIn",
-        href: "#",
-    },
-    {
-        label: "YouTube",
-        href: "#",
-    },
 ];
 
 export function Footer() {
@@ -192,25 +171,7 @@ export function Footer() {
                 ================================================== */}
 
                 <div className="border-t border-white/10 py-8">
-                    <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-                        <div>
-                            <p className="text-xs uppercase tracking-[0.2em] text-white/25">
-                                Social
-                            </p>
-
-                            <nav className="mt-4 flex flex-wrap gap-x-6 gap-y-2">
-                                {socialLinks.map((social) => (
-                                    <a
-                                        key={social.label}
-                                        href={social.href}
-                                        className="text-sm text-white/50 transition-colors duration-300 hover:text-white"
-                                    >
-                                        {social.label}
-                                    </a>
-                                ))}
-                            </nav>
-                        </div>
-
+                    <div className="flex justify-end">
                         <a
                             href="/contact"
                             className="inline-flex items-center gap-2 text-sm text-white/60 transition-colors duration-300 hover:text-white"
@@ -236,21 +197,6 @@ export function Footer() {
                             Reserved.
                         </p>
 
-                        <div className="flex flex-wrap gap-5">
-                            <a
-                                href="#"
-                                className="transition-colors duration-300 hover:text-white"
-                            >
-                                Privacy Policy
-                            </a>
-
-                            <a
-                                href="#"
-                                className="transition-colors duration-300 hover:text-white"
-                            >
-                                Terms & Conditions
-                            </a>
-                        </div>
                     </div>
                 </div>
             </Container>
