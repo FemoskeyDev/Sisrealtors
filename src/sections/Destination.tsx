@@ -1,14 +1,18 @@
 import { useState } from "react";
-import { ArrowUpRight } from "lucide-react";
+import { X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
+import { Button } from "../components/Button";
 import { Container } from "../components/Container";
 import { SectionLabel } from "../components/SectionLabel";
 
-import masterplanImage from "../assets/images/dominion-intro-02.jpeg";
+import amusementParkImage from "../assets/images/Amusement-park.jpeg";
+import diningImage from "../assets/images/dominion-dine.jpeg";
+import masterplanImage from "../assets/images/Full-Projects-View.jpeg";
+import hotelImage from "../assets/images/hotel.jpeg";
+import mallImage from "../assets/images/mall.jpeg";
 
 // ============================================================
 // DESTINATION DATA
-// Content reflects the four destination components in the brief.
 // ============================================================
 
 const destinations = [
@@ -18,10 +22,10 @@ const destinations = [
         title: "Mall",
         description:
             "A contemporary retail destination bringing fashion, beauty, technology, home, lifestyle, dining and entertainment together.",
-        position: {
-            left: "29%",
-            top: "42%",
-        },
+        cta: "Explore the Mall",
+        image: mallImage,
+        href: "#mall",
+        position: { left: "34%", top: "41%" },
     },
     {
         id: "hotel",
@@ -29,10 +33,10 @@ const destinations = [
         title: "Hotel",
         description:
             "Hospitality designed to give visitors a reason to stay longer, unwind and experience Dominion beyond the day.",
-        position: {
-            left: "69%",
-            top: "30%",
-        },
+        cta: "Explore the Hotel",
+        image: hotelImage,
+        href: "#hotel",
+        position: { left: "67%", top: "40%" },
     },
     {
         id: "entertainment",
@@ -40,10 +44,10 @@ const destinations = [
         title: "Amusement Park",
         description:
             "A destination for family activities, social moments and amusement park fun throughout the day.",
-        position: {
-            left: "72%",
-            top: "66%",
-        },
+        cta: "Explore the Amusement Park",
+        image: amusementParkImage,
+        href: "#entertainment",
+        position: { left: "22%", top: "65%" },
     },
     {
         id: "dining",
@@ -51,16 +55,93 @@ const destinations = [
         title: "Dining & Lifestyle",
         description:
             "Restaurants, cafés and lifestyle experiences designed around gathering, conversation and discovery.",
-        position: {
-            left: "38%",
-            top: "72%",
-        },
+        cta: "Explore Dining & Lifestyle",
+        image: diningImage,
+        href: "#experience",
+        position: { left: "88%", top: "46%" },
     },
 ];
 
+type Destination = (typeof destinations)[number];
+
+interface DestinationInfoCardProps {
+    destination: Destination;
+    onClose: () => void;
+    className: string;
+    idSuffix: "desktop" | "mobile";
+}
+
+function DestinationInfoCard({
+    destination,
+    onClose,
+    className,
+    idSuffix,
+}: DestinationInfoCardProps) {
+    const titleId = `destination-card-${destination.id}-${idSuffix}`;
+
+    return (
+        <motion.article
+            aria-live="polite"
+            aria-labelledby={titleId}
+            className={className}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 8 }}
+            transition={{ duration: 0.28, ease: "easeOut" }}
+        >
+            <div className="flex items-start justify-between gap-4">
+                <div>
+                    <p className="text-[10px] uppercase tracking-[0.18em] text-black/45">
+                        {destination.number} / {destination.title}
+                    </p>
+                    <h3
+                        id={titleId}
+                        className="mt-2 text-xl font-medium tracking-[-0.02em]"
+                    >
+                        {destination.title}
+                    </h3>
+                </div>
+
+                <button
+                    type="button"
+                    onClick={onClose}
+                    aria-label={`Close ${destination.title} details`}
+                    className="flex h-9 w-9 shrink-0 items-center justify-center border border-black/10 text-black/65 transition-colors hover:bg-black/5 hover:text-black focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#051B41]"
+                >
+                    <X size={16} strokeWidth={1.8} />
+                </button>
+            </div>
+
+            <p className="mt-3 text-sm leading-6 text-black/60">
+                {destination.description}
+            </p>
+
+            <div className="mt-4 flex items-center gap-4">
+                <img
+                    src={destination.image}
+                    alt=""
+                    aria-hidden="true"
+                    className="h-16 w-20 shrink-0 object-cover"
+                    loading="lazy"
+                />
+                <Button
+                    href={destination.href}
+                    variant="primary"
+                    className="min-h-11 flex-1 justify-between gap-2 px-3"
+                >
+                    {destination.cta}
+                </Button>
+            </div>
+        </motion.article>
+    );
+}
+
 export function Destination() {
-    const [activeDestination, setActiveDestination] = useState(
-        destinations[0],
+    const [selectedDestinationId, setSelectedDestinationId] = useState<
+        string | null
+    >(null);
+    const selectedDestination = destinations.find(
+        (destination) => destination.id === selectedDestinationId,
     );
 
     return (
@@ -136,16 +217,13 @@ export function Destination() {
                 </div>
 
                 {/* ==================================================
-                    MASTERPLAN
+                    INTERACTIVE MASTERPLAN
                 ================================================== */}
 
                 <motion.div
                     initial={{ opacity: 0, y: 32 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{
-                        once: true,
-                        margin: "-5% 0px",
-                    }}
+                    viewport={{ once: true, margin: "-5% 0px" }}
                     transition={{
                         delay: 0.15,
                         duration: 1,
@@ -153,211 +231,95 @@ export function Destination() {
                     }}
                     className="mt-16 md:mt-24 lg:mt-28"
                 >
-                    <div className="grid overflow-hidden border border-black/10 lg:grid-cols-[1fr_320px]">
-                        {/* ==========================================
-                            MASTERPLAN VISUAL
-                        ========================================== */}
+                    <div className="relative isolate aspect-[16/9] w-full overflow-hidden bg-neutral-100">
+                        <motion.img
+                            src={masterplanImage}
+                            alt="Full project view of Dominion Leisure City"
+                            loading="lazy"
+                            decoding="async"
+                            className="absolute inset-0 h-full w-full object-cover"
+                            initial={{ scale: 1.05 }}
+                            whileInView={{ scale: 1 }}
+                            viewport={{ once: true }}
+                            transition={{
+                                duration: 1.2,
+                                ease: [0.22, 1, 0.36, 1],
+                            }}
+                        />
 
-                        <div className="relative aspect-[4/3] md:min-h-[650px] lg:min-h-[760px] overflow-hidden bg-neutral-100 md:min-h-[650px] lg:aspect-auto lg:min-h-[760px]">
-                            <motion.img
-                                src={masterplanImage}
-                                alt="Dominion Leisure City"
-                                className="absolute inset-0 h-full w-full object-cover"
-                                initial={{ scale: 1.05 }}
-                                whileInView={{ scale: 1 }}
-                                viewport={{ once: true }}
-                                transition={{
-                                    duration: 1.2,
-                                    ease: [0.22, 1, 0.36, 1],
-                                }}
-                            />
+                        {/* Minimal contrast treatment for the markers */}
+                        <div
+                            aria-hidden="true"
+                            className="pointer-events-none absolute inset-0 bg-black/[0.03]"
+                        />
 
-                            {/* Soft visual treatment */}
-                            <div className="absolute inset-0 bg-black/5" />
+                        {destinations.map((destination) => {
+                            const isActive =
+                                selectedDestinationId === destination.id;
 
-                            {/* ======================================
-                                INTERACTIVE HOTSPOTS
-                            ====================================== */}
-
-                            {destinations.map((destination) => {
-                                const isActive =
-                                    activeDestination.id ===
-                                    destination.id;
-
-                                return (
-                                    <button
-                                        key={destination.id}
-                                        type="button"
-                                        onClick={() =>
-                                            setActiveDestination(
-                                                destination,
-                                            )
-                                        }
-                                        aria-label={`View ${destination.title}`}
-                                        className="absolute z-10 -translate-x-1/2 -translate-y-1/2"
-                                        style={{
-                                            left: destination.position.left,
-                                            top: destination.position.top,
-                                        }}
-                                    >
-                                        {/* Pulse */}
-                                        <span
-                                            className={[
-                                                "absolute inset-0 rounded-full transition-all duration-500",
-                                                isActive
-                                                    ? "animate-ping bg-white/50"
-                                                    : "bg-transparent",
-                                            ].join(" ")}
-                                        />
-
-                                        {/* Point */}
-                                        <span
-                                            className={[
-                                                "relative flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-300",
-                                                isActive
-                                                    ? "border-white bg-white text-black scale-110"
-                                                    : "border-white/80 bg-black/50 text-white backdrop-blur-sm hover:scale-110 hover:bg-white hover:text-black",
-                                            ].join(" ")}
-                                        >
-                                            <span className="text-[10px] font-medium">
-                                                {destination.number}
-                                            </span>
-                                        </span>
-                                    </button>
-                                );
-                            })}
-
-                            {/* Active hotspot label */}
-                            <AnimatePresence mode="wait">
-                                <motion.div
-                                    key={activeDestination.id}
-                                    initial={{
-                                        opacity: 0,
-                                        y: 8,
+                            return (
+                                <button
+                                    key={destination.id}
+                                    type="button"
+                                    onClick={() =>
+                                        setSelectedDestinationId(
+                                            destination.id,
+                                        )
+                                    }
+                                    aria-label={`View ${destination.title}`}
+                                    aria-pressed={isActive}
+                                    className="group absolute z-10 flex h-11 w-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#D39B2A]"
+                                    style={{
+                                        left: destination.position.left,
+                                        top: destination.position.top,
                                     }}
-                                    animate={{
-                                        opacity: 1,
-                                        y: 0,
-                                    }}
-                                    exit={{
-                                        opacity: 0,
-                                        y: -8,
-                                    }}
-                                    transition={{
-                                        duration: 0.3,
-                                    }}
-                                    className="absolute bottom-6 left-6 z-20 max-w-xs md:bottom-8 md:left-8"
                                 >
-                                    <div className="bg-black/80 p-5 text-white backdrop-blur-md md:p-6">
-                                        <p className="text-[10px] uppercase tracking-[0.2em] text-white/45">
-                                            {activeDestination.number}
-                                        </p>
+                                    <span
+                                        aria-hidden="true"
+                                        className={[
+                                            "block h-3 w-3 rounded-full border border-white bg-[#051B41] shadow-[0_0_0_3px_rgba(255,255,255,0.45)] transition-all duration-200 group-hover:scale-125",
+                                            isActive
+                                                ? "scale-125 bg-[#D39B2A] shadow-[0_0_0_5px_rgba(211,155,42,0.35)]"
+                                                : "",
+                                        ].join(" ")}
+                                    />
+                                </button>
+                            );
+                        })}
 
-                                        <h3 className="mt-2 text-xl font-medium tracking-[-0.02em]">
-                                            {activeDestination.title}
-                                        </h3>
-                                    </div>
-                                </motion.div>
+                        {/* Desktop contextual card */}
+                        <div className="absolute bottom-6 right-6 z-20 hidden w-full max-w-sm lg:block">
+                            <AnimatePresence mode="wait">
+                                {selectedDestination && (
+                                    <DestinationInfoCard
+                                        key={selectedDestination.id}
+                                        destination={selectedDestination}
+                                        onClose={() =>
+                                            setSelectedDestinationId(null)
+                                        }
+                                        idSuffix="desktop"
+                                        className="border border-black/10 bg-white/95 p-5 text-black backdrop-blur-sm"
+                                    />
+                                )}
                             </AnimatePresence>
                         </div>
+                    </div>
 
-                        {/* ==========================================
-                            DESTINATION DETAILS
-                        ========================================== */}
-
-                        <div className="flex flex-col justify-between bg-neutral-50 p-7 md:p-10 lg:p-8">
-                            <div>
-                                <p className="text-xs uppercase tracking-[0.2em] text-black/35">
-                                    Explore the destination
-                                </p>
-
-                                {/* Destination navigation */}
-                                <div className="mt-8">
-                                    {destinations.map((destination) => {
-                                        const isActive =
-                                            activeDestination.id ===
-                                            destination.id;
-
-                                        return (
-                                            <button
-                                                key={destination.id}
-                                                type="button"
-                                                onClick={() =>
-                                                    setActiveDestination(
-                                                        destination,
-                                                    )
-                                                }
-                                                className="group flex w-full items-center justify-between border-t border-black/10 py-5 text-left last:border-b"
-                                            >
-                                                <div className="flex items-center gap-4">
-                                                    <span
-                                                        className={[
-                                                            "text-xs transition-colors duration-300",
-                                                            isActive
-                                                                ? "text-black"
-                                                                : "text-black/30 group-hover:text-black/60",
-                                                        ].join(" ")}
-                                                    >
-                                                        {destination.number}
-                                                    </span>
-
-                                                    <span
-                                                        className={[
-                                                            "text-base transition-colors duration-300",
-                                                            isActive
-                                                                ? "text-black"
-                                                                : "text-black/45 group-hover:text-black",
-                                                        ].join(" ")}
-                                                    >
-                                                        {destination.title}
-                                                    </span>
-                                                </div>
-
-                                                <ArrowUpRight
-                                                    size={17}
-                                                    strokeWidth={1.7}
-                                                    className={[
-                                                        "transition-all duration-300",
-                                                        isActive
-                                                            ? "translate-x-0 -translate-y-0 text-black"
-                                                            : "translate-y-1 -translate-x-1 text-black/20 group-hover:translate-x-0 group-hover:translate-y-0 group-hover:text-black",
-                                                    ].join(" ")}
-                                                />
-                                            </button>
-                                        );
-                                    })}
-                                </div>
-
-                                {/* Active description */}
-                                <AnimatePresence mode="wait">
-                                    <motion.p
-                                        key={activeDestination.id}
-                                        initial={{
-                                            opacity: 0,
-                                            y: 10,
-                                        }}
-                                        animate={{
-                                            opacity: 1,
-                                            y: 0,
-                                        }}
-                                        exit={{
-                                            opacity: 0,
-                                            y: -10,
-                                        }}
-                                        transition={{
-                                            duration: 0.35,
-                                        }}
-                                        className="mt-8 text-sm leading-7 text-black/55"
-                                    >
-                                        {
-                                            activeDestination.description
-                                        }
-                                    </motion.p>
-                                </AnimatePresence>
-                            </div>
-
-                          
-                        </div>
+                    {/* Mobile contextual card follows the visible masterplan */}
+                    <div className="mt-4 lg:hidden">
+                        <AnimatePresence mode="wait">
+                            {selectedDestination && (
+                                <DestinationInfoCard
+                                    key={selectedDestination.id}
+                                    destination={selectedDestination}
+                                    onClose={() =>
+                                        setSelectedDestinationId(null)
+                                    }
+                                    idSuffix="mobile"
+                                    className="border border-black/10 bg-neutral-50 p-5 text-black"
+                                />
+                            )}
+                        </AnimatePresence>
                     </div>
                 </motion.div>
             </Container>

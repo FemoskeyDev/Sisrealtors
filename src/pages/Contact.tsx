@@ -1,4 +1,4 @@
-import { useState, type FormEvent } from "react";
+import { useRef, useState, type FormEvent } from "react";
 import { motion } from "motion/react";
 import { Button } from "../components/Button";
 import { Container } from "../components/Container";
@@ -17,12 +17,13 @@ const fieldClassName =
 export function ContactPage() {
     const [submissionState, setSubmissionState] =
         useState<SubmissionState>("ready");
+    const submissionInProgress = useRef(false);
 
     const isSubmitting = submissionState === "submitting";
 
     const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        if (isSubmitting) return;
+        if (submissionInProgress.current) return;
 
         const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
         if (!accessKey) {
@@ -38,6 +39,7 @@ export function ContactPage() {
         const form = event.currentTarget;
         const formData = new FormData(form);
 
+        submissionInProgress.current = true;
         setSubmissionState("submitting");
 
         try {
@@ -69,6 +71,8 @@ export function ContactPage() {
             setSubmissionState("success");
         } catch {
             setSubmissionState("error");
+        } finally {
+            submissionInProgress.current = false;
         }
     };
 
@@ -103,7 +107,7 @@ export function ContactPage() {
                 </div>
 
                 {/* Contact form and company details */}
-                <div className="mt-16 grid gap-16 pt-10 md:mt-20 md:pt-14 lg:grid-cols-[1.2fr_0.8fr] lg:gap-24">
+                <div className="mt-4 grid gap-16 pt-10 md:mt-8 md:pt-14 lg:grid-cols-[1.2fr_0.8fr] lg:gap-12">
                     <motion.form
                         onSubmit={handleSubmit}
                         aria-busy={isSubmitting}
@@ -214,7 +218,7 @@ export function ContactPage() {
                                         Sending your enquiry
                                     </span>
                                 )}
-                                {isSubmitting ? "SENDING..." : "SEND YOUR ENQUIRY"}
+                                {isSubmitting ? "Sending..." : "Send your enquiry"}
                             </Button>
                             {submissionState === "success" && (
                                 <p id="contact-submission-status" role="status" aria-live="polite" className="max-w-md text-sm leading-6 text-green-800">

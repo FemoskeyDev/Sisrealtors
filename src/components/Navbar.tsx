@@ -104,7 +104,7 @@ export function Navbar() {
                         <Button
                             href="/contact"
                             variant="secondary"
-                            className="hidden shrink-0 lg:inline-flex"
+                            className="!hidden shrink-0 lg:!inline-flex"
                         >
                             Partner With Us
                         </Button>

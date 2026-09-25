@@ -29,7 +29,7 @@ const experiences = [
         description:
             "From coffee and casual dining to refined experiences, discover new ways to eat, meet and linger.",
         image: dineImage,
-        href: "#dining",
+        href: "#mall",
     },
     {
         number: "03",

@@ -27,7 +27,7 @@ const stats = [
 export function Introduction() {
     return (
         <section
-            id="experience"
+            id="introduction"
             className="bg-white py-24 text-black md:py-32 lg:py-40"
         >
             <Container>

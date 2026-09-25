@@ -1,6 +1,11 @@
 import { useEffect, useMemo, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
-import { AnimatePresence, motion, useInView } from "motion/react";
+import {
+    AnimatePresence,
+    motion,
+    useInView,
+    useReducedMotion,
+} from "motion/react";
 import { Container } from "../components/Container";
 import { SectionLabel } from "../components/SectionLabel";
 
@@ -84,10 +89,11 @@ export function DayAtDominion() {
     });
 
     const activeExperience = dayTimeline[activeIndex];
+    const shouldReduceMotion = useReducedMotion();
 
     // Automatically advances the timeline while the section is visible.
     useEffect(() => {
-        if (!sectionInView || isPaused) {
+        if (!sectionInView || isPaused || shouldReduceMotion) {
             return;
         }
 
@@ -123,6 +129,7 @@ export function DayAtDominion() {
     }, [
         sectionInView,
         isPaused,
+        shouldReduceMotion,
         activeIndex,
         activeExperience.duration,
     ]);

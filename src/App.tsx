@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { MotionConfig } from "motion/react";
 import { Navbar } from "./components/Navbar";
 import { Hero } from "./sections/Hero";
 import { Introduction } from "./sections/Introduction";
@@ -25,7 +26,7 @@ function App() {
   }, [isContactPage]);
 
   return (
-    <>
+    <MotionConfig reducedMotion="user">
       <Navbar />
 
       {isContactPage ? (
@@ -48,7 +49,7 @@ function App() {
       )}
 
       <Footer />
-    </>
+    </MotionConfig>
   );
 }
 

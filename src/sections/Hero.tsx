@@ -57,7 +57,7 @@ export function Hero() {
 
               <a
                 href="#experience"
-                className="inline-flex items-center gap-2 bg-orange-100 px-6 py-3.5 text-sm font-medium !text-black transition-colors duration-300 hover:!bg-[#D39B2A] hover:!text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-dark"
+                className="inline-flex items-center gap-2 bg-orange-100 px-6 py-3.5 text-sm font-medium !text-black transition-colors duration-300 hover:!bg-[#D39B2A] hover:!text-[#051B41] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-dark"
               >
                 Discover Dominion
                 <ArrowUpRight size={16} strokeWidth={1.8} />
