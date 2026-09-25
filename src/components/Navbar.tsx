@@ -74,7 +74,7 @@ export function Navbar() {
                             <img
                                 src={logo}
                                 alt="SIS Realtors Limited"
-                                className="block h-auto w-[120px] object-contain md:w-[140px]"
+                                className="block h-auto max-h-10 w-[145px] object-contain md:w-[140px]"
                             />
                         </a>
 
