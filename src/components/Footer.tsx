@@ -1,6 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import { Container } from "./Container";
-import logo from "../assets/logo.svg";
+import logo from "../assets/logo-white.svg";
 
 // ============================================================
 // FOOTER NAVIGATION
@@ -51,7 +51,7 @@ export function Footer() {
                                 <img
                                     src={logo}
                                     alt="SIS Realtors Limited"
-                                    className="h-auto w-[150px] brightness-0 invert md:w-[170px]"
+                                    className="h-auto w-[150px] md:w-[170px]"
                                 />
                             </a>
 

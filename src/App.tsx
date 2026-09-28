@@ -15,6 +15,7 @@ import { About } from "./sections/About";
 import { ContactPage } from "./pages/Contact";
 import { Contact } from "./sections/Contact";
 import { Footer } from "./components/Footer";
+import { Teams } from "./sections/Teams";
 
 function App() {
   const isContactPage = window.location.pathname.replace(/\/+$/, "") === "/contact";
@@ -44,6 +45,7 @@ function App() {
           <BrandPartnership />
           <Location />
           <About />
+          <Teams />
           <Contact />
         </main>
       )}

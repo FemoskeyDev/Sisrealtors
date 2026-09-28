@@ -14,6 +14,7 @@ const navItems = [
     { label: "Brands", href: "#brands" },
     { label: "Location", href: "#location" },
     { label: "About", href: "#about" },
+    { label: "Leadership", href: "#leadership" },
 ];
 
 export function Navbar() {
@@ -141,11 +142,11 @@ export function Navbar() {
                         : "pointer-events-none invisible opacity-0",
                 ].join(" ")}
             >
-                <div className="flex h-full flex-col pt-20">
-                    <Container className="flex h-full flex-col">
+                <div className="flex h-full min-h-0 flex-col pt-20">
+                    <Container className="flex h-full min-h-0 flex-col">
                         <nav
                             aria-label="Mobile navigation"
-                            className="flex flex-col pt-6"
+                            className="flex min-h-0 w-full min-w-0 flex-1 flex-col overflow-x-hidden overflow-y-auto overscroll-contain pt-6 pb-8"
                         >
                             {navItems.map((item, index) => (
                                 <a
@@ -158,7 +159,7 @@ export function Navbar() {
                                     }
                                     onClick={closeMobileMenu}
                                     className={[
-                                        "border-b border-black/10 py-5 text-[clamp(2rem,7vw,3.5rem)] font-medium leading-none tracking-[-0.04em] !text-black transition-colors duration-300 hover:!text-black/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-dark",
+                                        "block w-full border-b border-black/10 py-5 text-[clamp(2rem,7vw,3.5rem)] font-medium leading-none tracking-[-0.04em] !text-black transition-colors duration-300 hover:!text-black/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-dark",
                                         index === 0 ? "border-t" : "",
                                     ].join(" ")}
                                 >
@@ -168,7 +169,7 @@ export function Navbar() {
                         </nav>
 
                         {/* Mobile CTA */}
-                        <div className="mt-auto pb-8 pt-8">
+                        <div className="shrink-0 pb-8 pt-8">
                             <Button
                                 href="/contact"
                                 variant="secondary"
