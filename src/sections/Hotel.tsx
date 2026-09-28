@@ -8,7 +8,6 @@ import {
 } from "lucide-react";
 import { Container } from "../components/Container";
 import { SectionLabel } from "../components/SectionLabel";
-import { Button } from "../components/Button";
 
 import hotelImage from "../assets/images/hotel.jpeg";
 
@@ -194,10 +193,6 @@ export function Hotel() {
                             Everything you need to make staying part of the experience.
                         </p>
                     </div>
-
-                    <Button href="#hotel" variant="tertiary">
-                        Discover the Hotel
-                    </Button>
                 </motion.div>
 
                 {/* ==================================================
