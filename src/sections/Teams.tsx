@@ -53,7 +53,7 @@ const teamMembers: TeamMember[] = [
         image: tayoImage,
     },
     {
-        name: "Mrs. Joy Edu",
+        name: "Mrs. Joy Adun",
         role: "Director - Investment & Business Strategy",
         description:
             "Investment and business expert with a diverse portfolio spanning real estate and hospitality, committed to sound governance and sustainable growth.",
