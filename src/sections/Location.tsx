@@ -36,12 +36,20 @@ const locationHighlights = [
     {
         number: "05",
         title: "Lekki International Airport",
-        description: "Location information to be confirmed.",
+        description:
+            "A proposed airport project expected to strengthen future connectivity.",
     },
     {
         number: "06",
         title: "Alaro City",
-        description: "Location information to be confirmed.",
+        description:
+            "A mixed-use development within the wider Lekki Free Zone.",
+    },
+    {
+        number: "07",
+        title: "Coastal Road",
+        description:
+            "A major coastal corridor supporting future access and connectivity across the region.",
     },
 ];
 
@@ -119,8 +127,8 @@ export function Location() {
                             significant residential, industrial,
                             commercial and infrastructure development.{" "}
                             <span className="font-semibold text-yellow-600">
-                                Positioned within a corridor shaped by growth, movement and
-                                opportunity.
+                                Positioned within a corridor shaped by growth,
+                                movement and opportunity.
                             </span>
                         </p>
                     </motion.div>
@@ -135,78 +143,74 @@ export function Location() {
                         <SectionLabel>
                             Location Highlights
                         </SectionLabel>
-
                     </div>
 
                     <div className="grid md:grid-cols-2">
-                        {locationHighlights.map(
-                            (location, index) => (
-                                <motion.a
-                                    key={location.number}
-                                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(location.title)}`}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    initial={{
-                                        opacity: 0,
-                                        y: 24,
-                                    }}
-                                    whileInView={{
-                                        opacity: 1,
-                                        y: 0,
-                                    }}
-                                    viewport={{
-                                        once: true,
-                                        margin: "-10% 0px",
-                                    }}
-                                    transition={{
-                                        delay: index * 0.08,
-                                        duration: 0.7,
-                                        ease: [
-                                            0.22,
-                                            1,
-                                            0.36,
-                                            1,
-                                        ],
-                                    }}
-                                    className={[
-                                        "group border-b border-black/10 py-8 md:p-10",
-                                        index % 2 === 0
-                                            ? "md:border-r"
-                                            : "",
-                                    ].join(" ")}
-                                >
-                                    <div className="flex gap-6">
-                                        {/* Number */}
-                                        <span className="pt-1 text-xs text-black/30">
-                                            {location.number}
-                                        </span>
+                        {locationHighlights.map((location, index) => (
+                            <motion.a
+                                key={location.number}
+                                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                                    location.title,
+                                )}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                initial={{
+                                    opacity: 0,
+                                    y: 24,
+                                }}
+                                whileInView={{
+                                    opacity: 1,
+                                    y: 0,
+                                }}
+                                viewport={{
+                                    once: true,
+                                    margin: "-10% 0px",
+                                }}
+                                transition={{
+                                    delay: index * 0.08,
+                                    duration: 0.7,
+                                    ease: [
+                                        0.22,
+                                        1,
+                                        0.36,
+                                        1,
+                                    ],
+                                }}
+                                className={[
+                                    "group border-b border-black/10 py-8 md:p-10",
+                                    index % 2 === 0
+                                        ? "md:border-r"
+                                        : "",
+                                ].join(" ")}
+                            >
+                                <div className="flex gap-6">
+                                    {/* Number */}
+                                    <span className="pt-1 text-xs text-black/30">
+                                        {location.number}
+                                    </span>
 
-                                        <div className="flex-1">
-                                            <div className="flex items-start justify-between gap-5">
-                                                <h3 className="text-xl font-medium tracking-[-0.025em] md:text-2xl">
-                                                    {location.title}
-                                                </h3>
+                                    <div className="flex-1">
+                                        <div className="flex items-start justify-between gap-5">
+                                            <h3 className="text-xl font-medium tracking-[-0.025em] md:text-2xl">
+                                                {location.title}
+                                            </h3>
 
-                                                <ArrowUpRight
-                                                    size={18}
-                                                    strokeWidth={1.6}
-                                                    className="shrink-0 text-black/20 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-black"
-                                                />
-                                            </div>
-
-                                            <p className="mt-4 max-w-md text-sm leading-7 text-black/50 md:text-base">
-                                                {
-                                                    location.description
-                                                }
-                                            </p>
+                                            <ArrowUpRight
+                                                size={18}
+                                                strokeWidth={1.6}
+                                                className="shrink-0 text-black/20 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-black"
+                                            />
                                         </div>
+
+                                        <p className="mt-4 max-w-md text-sm leading-7 text-black/50 md:text-base">
+                                            {location.description}
+                                        </p>
                                     </div>
-                                </motion.a>
-                            ),
-                        )}
+                                </div>
+                            </motion.a>
+                        ))}
                     </div>
                 </div>
-
             </Container>
         </section>
     );
