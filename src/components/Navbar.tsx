@@ -64,7 +64,7 @@ export function Navbar() {
                 ].join(" ")}
             >
                 <Container>
-                    <div className="flex h-20 items-center justify-between lg:h-24">
+                    <div className="flex h-16 items-center justify-between lg:h-18">
                         {/* Logo */}
                         <a
                             href={isContactPage ? "/" : "#"}
